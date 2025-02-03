@@ -21,3 +21,5 @@ A **React Native** application that provides real-time event tracking and game d
 - **Firebase** (for authentication and data storage)
 - **Clash of Clans API**
 - **ClashKing API**
+
+This material is unofficial and is not endorsed by Supercell. For more information see Supercell's Fan Content Policy: https://supercell.com/en/fan-content-policy/
