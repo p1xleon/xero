@@ -1,5 +1,7 @@
 # Xero
-Clash of Clans Companion App
+
+**Clash of Clans Companion App**
+
 A **React Native** application that provides real-time event tracking and game data for **Clash of Clans**. This app fetches data from the **official Clash of Clans API and ClashKing API** and displays event schedules, clan information, and more in a clean and user-friendly interface.
 
 ## Features
