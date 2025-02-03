@@ -23,3 +23,44 @@ A **React Native** application that provides real-time event tracking and game d
 - **ClashKing API**
 
 This material is unofficial and is not endorsed by Supercell. For more information see Supercell's Fan Content Policy: https://supercell.com/en/fan-content-policy/
+
+Installation & Setup
+
+Prerequisites
+
+Install Node.js & Expo CLI
+
+Clone the repository:
+
+git clone https://github.com/your-username/clash-of-clans-app.git
+cd clash-of-clans-app
+
+Install dependencies:
+
+npm install
+
+API Configuration
+
+This app requires access to the ClashKing API for retrieving game data.
+
+Set up environment variables for API keys:
+
+echo "API_KEY=your_clashking_api_key" > .env
+
+Running the App
+
+For development mode:
+
+expo start
+
+To build a production APK:
+
+eas build -p android --profile production
+
+Deployment
+
+The app can be built using EAS Build for Android & iOS.
+
+Generate an APK for local installation:
+
+eas build -p android --profile production
