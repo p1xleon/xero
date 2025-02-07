@@ -30,7 +30,7 @@ const Login = () => {
       <View style={styles.bottomContainer}>
         <ThemedText type="title">Login</ThemedText>
         <ThemedInput placeholder="Email" value={email} keyboardType="email-address" onChangeText={setEmail} />
-        <ThemedInput placeholder="Passowrd" value={password} secureTextEntry onChangeText={setPassword} />
+        <ThemedInput placeholder="Password" value={password} secureTextEntry onChangeText={setPassword} />
         <Button title={loading ? "Logging in..." : "Login"} onPress={handleLogin} />
         <ThemedText style={{ textAlign: "center", marginVertical: 10 }}>
           Dont have an account?<ThemedText type="defaultSemiBold"><Link href='/signUp'> Sign up</Link></ThemedText>

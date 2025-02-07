@@ -16,15 +16,15 @@ import { ThemedText } from "./ui/ThemedText";
 interface BaseCardProps {
   name: string;
   thLevel: number;
-  // clanBadge: string | undefined;
-  // clanName: string | undefined;
+  clanBadge: string | undefined;
+  clanName: string | undefined;
   tag: string;
   lastOnline?: string;
   children?: ReactNode;
   style?: StyleProp<ViewStyle>;
 }
 
-const BaseCard = ({ name, thLevel, tag, children, style, lastOnline }: BaseCardProps) => {
+const BaseCard = ({ name, thLevel, tag, children, style, lastOnline, clanBadge, clanName }: BaseCardProps) => {
   return (
     <View style={[styles.profile, style]}>
       <Link
@@ -42,9 +42,9 @@ const BaseCard = ({ name, thLevel, tag, children, style, lastOnline }: BaseCardP
               {tag}
             </ThemedText>
             <View style={styles.strip}>
-              {/* <Image source={{ uri: clanBadge }} style={styles.clanbadge} /> */}
+              <Image source={{ uri: clanBadge }} style={styles.clanbadge} />
               <ThemedText type="subtextBold" style={{ color: "#525252" }}>
-                {lastOnline}
+                {clanName}
               </ThemedText>
             </View>
           </View>

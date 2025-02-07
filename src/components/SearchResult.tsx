@@ -24,7 +24,7 @@ type ClanResult = {
   warFrequency?: number;
   warLeague?: string;
   members: number;
-  imageUrl?: string;
+  imageUrl: string;
   leagueIcon?: string;
   type: string;
   language?: string;
@@ -57,11 +57,11 @@ export const PlayerResult = ({ name, clan_tag, clan_name, league, th, tag, troph
 export const ClanResult = ({ name, language, clanLevel, warLeague, members, tag, type, imageUrl, leagueIcon }: ClanResult) => {
   return (
     <ThemedBlockView style={styles.container}>
-      {/* <Image source={{ uri: imageUrl }} style={styles.image} /> */}
+      <Image source={{ uri: imageUrl }} style={styles.image} />
       <View>
         <View style={styles.strip}>
         <ThemedText type="subtitle">{name} </ThemedText>
-        <ThemedText type="secondarySemiBold"> Level {clanLevel}</ThemedText>
+        {/* <ThemedText type="secondarySemiBold"> Level {clanLevel}</ThemedText> */}
         </View>
         <View style={styles.strip}>
           <ThemedText>{tag}</ThemedText>

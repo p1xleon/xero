@@ -22,9 +22,9 @@ const Banner = ({ name, tag, imageUrl, last_online }: BannerProps) => {
         <View>
           <ThemedText type="subtitle">{name}</ThemedText>
           <ThemedText type="secondarySemiBold">{tag}</ThemedText>
-          {last_online && (
+          {/* {last_online && (
             <ThemedText type="secondarySemiBold">Last seen {last_online}</ThemedText>
-          )}
+          )} */}
         </View>
       </View>
     </View>

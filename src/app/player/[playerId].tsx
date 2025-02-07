@@ -13,13 +13,14 @@ import { formatLastOnline } from "../../services/utilities";
 
 const Player = () => {
   const { playerId } = useLocalSearchParams<{ playerId: string }>();
-  const [player, setPlayer] = useState<ClashKingPlayer>();
+  // const [player, setPlayer] = useState<ClashKingPlayer>();
+  const [player, setPlayer] = useState<PlayerProps>();
 
   useEffect(() => {
     const playerTag = playerId;
     const getPlayer = async () => {
       try {
-        const player = await fetchPlayer(playerTag);
+        const player = await fetchPlayerDetails(playerTag);
         setPlayer(player);
       } catch (error) {
         console.error("Error getting player details", error);
@@ -36,31 +37,31 @@ const Player = () => {
           <Banner
             name={player.name}
             tag={player.tag}
-            imageUrl={TownHallMap[player.townhall]}
-            last_online={formatLastOnline(player.last_online)}
+            imageUrl={TownHallMap[player.townHallLevel]}
+            // last_online={formatLastOnline(player.last_online)}
           />
           <PlayerBadges
-            townhall={player.townhall}
-            // builderHallLevel={player.builderHallLevel}
-            // expLevel={player.expLevel}
-            // bestTrophies={player.bestTrophies}
+            townHallLevel={player.townHallLevel}
+            builderHallLevel={player.builderHallLevel}
+            expLevel={player.expLevel}
+            bestTrophies={player.bestTrophies}
             league={player.league}
             trophies={player.trophies}
-            // builderBaseTrophies={player.builderBaseTrophies}
-            // builderBaseLeague={player.builderBaseLeague}
+            builderBaseTrophies={player.builderBaseTrophies}
+            builderBaseLeague={player.builderBaseLeague}
             warStars={player.warStars}
-            // warPreference={player.warPreference}
-            // donations={player.donations}
-            // donationsReceived={player.donationsReceived}
-            // attackWins={player.attackWins}
-            // defenseWins={player.defenseWins}
+            warPreference={player.warPreference}
+            donations={player.donations}
+            donationsReceived={player.donationsReceived}
+            attackWins={player.attackWins}
+            defenseWins={player.defenseWins}
             clanCapitalContributions={player.clanCapitalContributions}
-            // role={RoleLabels[player.role]}
-            // bestBuilderBaseTrophies={player.bestBuilderBaseTrophies}
-            // townHallWeaponLevel={player.townHallWeaponLevel}
-            // labels={player.labels}
+            role={RoleLabels[player.role]}
+            bestBuilderBaseTrophies={player.bestBuilderBaseTrophies}
+            townHallWeaponLevel={player.townHallWeaponLevel}
+            labels={player.labels}
           />
-          {/* <PlayerStats heroes={player.heroes} heroEquipment={player.heroEquipment} troops={player.troops} spells={player.spells} /> */}
+          <PlayerStats heroes={player.heroes} heroEquipment={player.heroEquipment} troops={player.troops} spells={player.spells} />
         </ScrollView>
       )}
     </ThemedView>

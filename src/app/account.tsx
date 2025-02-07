@@ -15,10 +15,10 @@ interface Profile {
   playerTag: string;
   optedIn: boolean;
   name: string;
-  townhall: number;
-  last_online: number;
-  // clanName?: string;
-  // clanBadge?: string;
+  townHallLevel: number;
+  last_online?: number;
+  clanName?: string;
+  clanBadge?: string;
 }
 
 const Account = () => {
@@ -32,20 +32,20 @@ const Account = () => {
     const villages = await Promise.all(
       storeProfiles.map(async (profile: { playerTag: string; optedIn: string }) => {
         try {
-          const village = await fetchPlayer(profile.playerTag);
+          const village = await fetchPlayerDetails(profile.playerTag);
           if (!village) return null;
           return {
             playerTag: profile.playerTag,
             optedIn: profile.optedIn,
             name: village.name,
-            townhall: village.townhall,
-            last_online: village.last_online,
-            // clanName: village.clan?.name,
-            // clanBadge: village.clan?.badgeUrls.medium,
+            townHallLevel: village.townHallLevel,
+            // last_online: village.last_online,
+            clanName: village.clan?.name,
+            clanBadge: village.clan?.badgeUrls.medium,
           };
         } catch (error) {
           // console.error("Error fetching player details", error);
-          return { ...profile, name: "Chief", townhall: 1 };
+          return { ...profile, name: "Chief", townHallLevel: 1 };
         }
       })
     );
@@ -100,7 +100,7 @@ const Account = () => {
             renderItem={({ item }) => (
               <View style={styles.profile}>
                 <View style={styles.strip}>
-                  <Image source={{ uri: TownHallMap[item.townhall] }} style={styles.thImage} />
+                  <Image source={{ uri: TownHallMap[item.townHallLevel] }} style={styles.thImage} />
                   <View>
                     <ThemedText type="subtitle" style={{ color: "#d8d8d8" }}>
                       {item.name}
@@ -109,9 +109,9 @@ const Account = () => {
                       {item.playerTag}
                     </ThemedText>
                     <View style={styles.strip}>
-                      {/* <Image source={{ uri: item.clanBadge }} style={styles.clanbadge} /> */}
+                      <Image source={{ uri: item.clanBadge }} style={styles.clanbadge} />
                       <ThemedText type="subtextBold" style={{ color: "#7a7a7a" }}>
-                        {formatLastOnline(item.last_online)}
+                        {item.clanName}
                       </ThemedText>
                     </View>
                   </View>

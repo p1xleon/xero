@@ -20,13 +20,13 @@ interface ProfileModalProps {
 const ProfileModal = ({ isVisible, close, onVillageAdded }: ProfileModalProps) => {
   const [playerTag, setPlayerTag] = useState<string>("");
   const [optedIn, setOptedIn] = useState<boolean>(false);
-  const [player, setPlayer] = useState<ClashKingPlayer>();
+  const [player, setPlayer] = useState<Player>();
   const [errorMessage, setErrorMessage] = useState<string>();
 
   const getPlayer = async () => {
     setErrorMessage("");
     try {
-      const player = await fetchPlayer(playerTag);
+      const player = await fetchPlayerDetails(playerTag);
       setPlayer(player);
     } catch (error: any) {
       setErrorMessage("Something went wrong");
@@ -82,13 +82,13 @@ const ProfileModal = ({ isVisible, close, onVillageAdded }: ProfileModalProps) =
           />
           {player && (
             <View style={styles.player}>
-              <Image source={{ uri: TownHallMap[player.townhall] }} style={styles.image} />
+              <Image source={{ uri: TownHallMap[player.townHallLevel] }} style={styles.image} />
               <View>
                 <ThemedText type="subtitle" style={{ fontSize: 24 }}>
                   {player.name}
                 </ThemedText>
                 <View style={styles.strip}>
-                  {/* <Image source={{ uri: player.clan.badgeUrls.medium }} style={styles.clanbadge} /> */}
+                  <Image source={{ uri: player.clan.badgeUrls.medium }} style={styles.clanbadge} />
                   <ThemedText type="secondarySemiBold">{player.tag}</ThemedText>
                 </View>
               </View>

@@ -20,24 +20,24 @@ const ProfileList = () => {
         const villages = await Promise.all(
           storedProfiles.map(async (profile) => {
             try {
-              const village = await fetchPlayer(profile.playerTag); // Fetch player details from Clash API
+              const village = await fetchPlayerDetails(profile.playerTag); // Fetch player details from Clash API
               if (!village) return null;
               return {
                 playerTag: profile.playerTag,
                 optedIn: profile.optedIn,
                 name: village.name,
-                townhall: village.townhall,
-                lastOnline: village.last_online,
-                // clanName: village.clan?.name,
-                // clanBadge: village.clan?.badgeUrls.medium,
+                townHallLevel: village.townHallLevel,
+                // lastOnline: village.last_online,
+                clanName: village.clan?.name,
+                clanBadge: village.clan?.badgeUrls.medium,
               };
             } catch (error) {
               // console.error("Error fetching player details", error);
-              return { ...profile, name: "Chief", townhall: 1 }; // Default values if error occurs
+              return { ...profile, name: "Chief", townHallLevel: 1 }; // Default values if error occurs
             }
           })
         );
-        setAllProfiles(villages.filter((v) => v !== null)); // Remove null entries
+        setAllProfiles(villages.filter((v) => v !== null)); // remove null entries
       } catch (error) {
         console.error("Failed to load profiles", error);
       }
@@ -65,10 +65,10 @@ const ProfileList = () => {
               <BaseCard
                 name={item.name}
                 tag={item.playerTag}
-                // clanName={item.clanName}
-                // clanBadge={item.clanBadge}
-                thLevel={item.townhall}
-                lastOnline={formatLastOnline(item.lastOnline)}
+                clanName={item.clanName}
+                clanBadge={item.clanBadge}
+                thLevel={item.townHallLevel}
+                // lastOnline={formatLastOnline(item.lastOnline)}
                 style={{ backgroundColor: item.optedIn ? "palegreen" : "lightsalmon" }}
               />
             )}

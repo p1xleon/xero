@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { Stack, useRouter } from "expo-router";
-import { View, Text } from "react-native";
 import { auth } from "../services/auth/firebaseConfig";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
+import { Loading } from "../components/ui/Loading";
+import { ThemedView } from "../components/ui/ThemedView";
 
 export default function Layout() {
   const [user, setUser] = useState<User | null>(null);
@@ -32,9 +33,9 @@ export default function Layout() {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Loading...</Text>
-      </View>
+      <ThemedView>
+        <Loading />
+      </ThemedView>
     );
   }
 

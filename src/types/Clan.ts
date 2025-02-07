@@ -5,7 +5,7 @@ export type Clan = {
   description: string;
   location: Location;
   isFamilyFriendly: boolean;
-  badgeUrls?: BadgeUrls;
+  badgeUrls: BadgeUrls;
   clanLevel: number;
   clanPoints: number;
   clanBuilderBasePoints: number;

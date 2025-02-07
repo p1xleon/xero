@@ -11,7 +11,7 @@ const WarStatus = () => {
     <ThemedView>
       <Header title="wars" />
       <SearchBar type="clan" />
-      {/* <WarWidget /> */}
+      <WarWidget />
       <ProfileList />
     </ThemedView>
   );

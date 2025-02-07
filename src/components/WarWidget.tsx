@@ -12,7 +12,7 @@ const WarWidget = () => {
 
   useEffect(() => {
     const getWarDetails = async () => {
-      const clanTag = "#YVUVCU9J";
+      const clanTag = "#YRUYL22";
       try {
         const war = await getWar(clanTag);
         setWarDetails(war);

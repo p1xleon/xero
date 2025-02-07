@@ -7,9 +7,9 @@ type MemberProps = {
   role: string;
   trophies: number;
   thIcon: string;
-  // leagueIcon: string;
+  leagueIcon: string;
   expLevel: number;
-  // clanRank: number;
+  clanRank: number;
 };
 
 const ClanMember = ({
@@ -17,15 +17,16 @@ const ClanMember = ({
   role,
   trophies,
   thIcon,
-  // leagueIcon,
+  leagueIcon,
   expLevel,
-}: // clanRank,
+  clanRank,
+}:  
 MemberProps) => {
   return (
     <View>
       <TouchableOpacity style={styles.container}>
         <View style={styles.badge}>
-          {/* <ThemedText type="defaultSemiBold">{clanRank}</ThemedText> */}
+          <ThemedText type="defaultSemiBold">{clanRank}</ThemedText>
           {/* th icon */}
           <Image
             source={{
@@ -55,18 +56,18 @@ MemberProps) => {
 
         {/* trophy */}
         <View style={styles.badge}>
-          {/* <Image
+          <Image
             source={{
               uri: leagueIcon,
             }}
             style={styles.leagueIcon}
-          /> */}
-          <Image
+          />
+          {/* <Image
             source={{
               uri: "https://static.wikia.nocookie.net/clashofclans/images/c/cd/Trophy.png/revision/latest?cb=20171031024226",
             }}
             style={styles.leagueIcon}
-          />
+          /> */}
           <ThemedText type="defaultSemiBold">{trophies}</ThemedText>
         </View>
       </TouchableOpacity>

@@ -18,10 +18,10 @@ interface Profile {
   playerTag: string;
   optedIn: boolean;
   name: string;
-  townhall: number;
+  townHallLevel: number;
   last_online: number;
-  // clanName?: string;
-  // clanBadge?: string;
+  clanName?: string;
+  clanBadge?: string;
 }
 
 const Profile = () => {
@@ -36,20 +36,20 @@ const Profile = () => {
     const villages = await Promise.all(
       storeProfiles.map(async (profile: { playerTag: string; optedIn: string }) => {
         try {
-          const village = await fetchPlayer(profile.playerTag);
+          const village = await fetchPlayerDetails(profile.playerTag);
           if (!village) return null;
           return {
             playerTag: profile.playerTag,
             optedIn: profile.optedIn,
             name: village.name,
-            townhall: village.townhall,
+            townHallLevel: village.townHallLevel,
             last_online: village.last_online,
-            // clanName: village.clan?.name,
-            // clanBadge: village.clan?.badgeUrls.medium,
+            clanName: village.clan?.name,
+            clanBadge: village.clan?.badgeUrls.medium,
           };
         } catch (error) {
           // console.error("Error fetching player details", error);
-          return { ...profile, name: "Chief", townhall: 1 };
+          return { ...profile, name: "Chief", townHallLevel: 1 };
         }
       })
     );
@@ -97,10 +97,10 @@ const Profile = () => {
                 <BaseCard
                   name={item.name}
                   tag={item.playerTag}
-                  // clanName={item.clanName}
-                  // clanBadge={item.clanBadge}
-                  lastOnline= {formatLastOnline(item.last_online)}
-                  thLevel={item.townhall}
+                  clanName={item.clanName}
+                  clanBadge={item.clanBadge}
+                  // lastOnline= {formatLastOnline(item.last_online)}
+                  thLevel={item.townHallLevel}
                   style={{ backgroundColor: item.optedIn ? "palegreen" : "lightsalmon" }}>
                   <TouchableOpacity onPress={() => toggleWarPref(item.playerTag, item.optedIn)}>
                     <Icon
